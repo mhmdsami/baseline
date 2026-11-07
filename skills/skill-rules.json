@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "description": "Skill activation rules for baseline. Keywords match on word boundaries only, and generic words are ignored so a rule cannot fire on noise.",
+  "ignore": [
+    "config",
+    "agent",
+    "skill",
+    "fix",
+    "plan",
+    "test",
+    "code",
+    "file",
+    "app",
+    "page",
+    "build",
+    "change",
+    "make",
+    "add"
+  ],
+  "skills": {
+    "design-language": {
+      "description": "How this codebase looks: tokens, type, spacing, primitives.",
+      "keywords": ["design", "spacing", "tokens", "typography", "palette", "colours", "colors", "layout", "looks"],
+      "intentPatterns": ["(style|design).*?(screen|page|component)", "(too|not).*?(tight|cramped|dense)"]
+    },
+    "commit": {
+      "description": "Conventional commits, one line, no trailer.",
+      "keywords": ["commit", "commits", "message"],
+      "intentPatterns": ["(commit|stage).*?(changes|work)"]
+    },
+    "unslop": {
+      "description": "Remove AI tells from prose.",
+      "keywords": ["unslop", "prose", "wording", "readme", "copy"],
+      "intentPatterns": ["(sounds|reads).*?(generated|ai|corporate)", "(tighten|humanize|rewrite).*?(text|copy|readme)"]
+    },
+    "animate": {
+      "description": "Build motion that feels right.",
+      "keywords": ["animate", "animation", "motion", "transition", "easing", "spring"],
+      "intentPatterns": ["(add|make).*?(animate|animation|feel alive)"]
+    },
+    "break-ui": {
+      "description": "Stress-test UI with plausible worst-case data.",
+      "keywords": ["break", "worst-case", "overflow", "truncate", "edge-case"],
+      "intentPatterns": ["(stress|break|edge).*?(ui|component|layout)"]
+    },
+    "writing-for-agents": {
+      "description": "Authoring skills and AGENTS.md.",
+      "keywords": ["agents.md", "skill.md", "frontmatter"],
+      "intentPatterns": ["(write|edit|update).*?(agents\\.md|skill\\.md|skill)"]
+    },
+    "nextjs-on-cloudflare": {
+      "description": "Next.js on Workers: OpenNext vs vinext, deployment.",
+      "keywords": ["opennext", "vinext", "workers", "cloudflare"],
+      "intentPatterns": ["(deploy|host|run).*?(workers|cloudflare|next)"]
+    },
+    "wrangler": {
+      "description": "Wrangler commands for Workers, D1, R2.",
+      "keywords": ["wrangler", "d1", "r2", "kv"],
+      "intentPatterns": ["(migrate|apply|deploy).*?(d1|database|worker)"]
+    },
+    "workers-best-practices": {
+      "description": "Production Workers configuration and runtime patterns.",
+      "keywords": ["compatibility", "bindings", "workerd", "compatibility_flags"],
+      "intentPatterns": ["(review|configure).*?(worker|binding)"]
+    }
+  }
+}

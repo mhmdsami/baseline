@@ -1,0 +1,10 @@
+pre-commit:
+  parallel: true
+  commands:
+    gate:
+      run: pnpm gate:fast
+
+pre-push:
+  commands:
+    gate:
+      run: pnpm gate
