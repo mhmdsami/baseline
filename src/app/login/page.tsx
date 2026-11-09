@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { SignInButton } from "@/components/sign-in-button";
 import { getSession } from "@/lib/session";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sign in",
@@ -15,16 +16,19 @@ export default async function LoginPage() {
   if (session) redirect("/");
 
   return (
-    <main className="mx-auto flex min-h-dvh w-full max-w-md flex-col justify-center gap-8 px-6">
-      <header className="flex flex-col gap-3">
-        <p className="font-mono text-xs uppercase tracking-[0.18em] text-text-tertiary">baseline</p>
-        <h1 className="font-display text-4xl italic leading-tight tracking-tight">Sign in</h1>
-        <p className="text-sm text-text-secondary">
-          Any Google account can sign in. The template ships no policy, so add one in{" "}
-          <code className="font-mono text-text-secondary">src/lib/session.ts</code> when a project needs it.
-        </p>
-      </header>
-      <SignInButton />
+    <main className="relative flex min-h-dvh items-center justify-center overflow-hidden p-6">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[420px] bg-[radial-gradient(60%_100%_at_50%_0%,color-mix(in_oklch,var(--primary)_12%,transparent),transparent)]"
+      />
+      <div className="relative w-full max-w-sm rounded-lg border border-border bg-card p-8 shadow-[0_18px_50px_-30px_rgb(0_0_0/0.9)]">
+        <h1 className="font-display text-2xl tracking-tight">{site.name}</h1>
+        <p className="mt-1 text-xs text-text-tertiary">{site.tagline}</p>
+        <h2 className="mt-7 text-base font-medium">Sign in</h2>
+        <div className="mt-6">
+          <SignInButton />
+        </div>
+      </div>
     </main>
   );
 }
